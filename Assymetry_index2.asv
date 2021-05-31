@@ -1,0 +1,44 @@
+% assymetry index 2
+clear all
+close all
+nchan=10;load B10
+s=B;num_epochs=size(result1,3)
+timeVec2=(1:num_epochs).*20/3600;  % 20 sec is the epoch duration
+% load result1 from partial correlation 
+ for i=1:2
+    sout=['Input Couple 1 Channel ' num2str(i) '      '];
+    ss=input(sout,'s');
+    stest{i}=ss;
+ end
+ for i=1:2
+    sout=['Input Couple 2 Channel ' num2str(i) '      '];
+    ss=input(sout,'s');
+    stest{i+2}=ss;
+ end
+ 
+ hit=0;
+for jj=1:length(stest)
+    for k=1:nchan
+        a=strcmp(stest(jj),s{k});
+        if a>0
+            hit=hit+1;
+            channel(hit)=k; 
+        end
+        clear a
+    end
+end
+
+clear i jj stest sout ss hit
+for kk=1:length(channel)
+    couple1=squeeze(result1(channel(1), channel(2),:));
+    couple2=squeeze(result1(channel(3), channel(4),:));
+    Assymetry_index=(couple1-couple2)/(couple1+couple2);
+end
+figure; plot(couple1, '*'); hold on; 
+plot(couple2, '*r');
+title(['blue' s(channel(1)) '-' s(channel(2)) ' >red' s(channel(3)) '-' s(channel(4))])
+
+    
+
+
+

@@ -1,0 +1,4 @@
+Couple 1 vs Couple 2 | Assym_Awake | Assym_Sleep  | Percentage_increase_from_awake
+F3 - T5 vs C3 - P3   | -0.7431     |  -0.4589     | -61.93%
+F4 - T6 vs C4 - P4   | -0.5604     |  -0.6453     | 13.15%
+P3 - O1 vs F3 - C3   | -1.4969     |  -1.1597     | -29.08%
